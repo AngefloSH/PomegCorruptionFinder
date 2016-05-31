@@ -64,7 +64,7 @@ string dec2str(int number) {
 	return result;
 }
 
-string dec2str(int number, int nbDigits) {
+string dec2str(int number, unsigned int nbDigits) {
 	string result = "";
 	int my_number = number;
 	while (my_number != 0) {
@@ -158,11 +158,14 @@ unsigned int getIVs(unsigned int rngValue) {
 
 int main()
 {
+	cout << "\t\t\t\tPomeg Corruption PID Finder v1.0\n\t\t\t\t\tby AngefloSH\n" << endl;
+
+
 	int natureChoice;
 	int nature = 0;
 	int corruptionType = getCorruptionType();
 
-	cout << "Are you looking for a specific nature ?" << endl << endl;
+	cout << "Are you looking for a specific nature ?\n" << endl;
 	cout << "1 : Yes\n2 : No" << endl;
 
 	cin >> natureChoice;
@@ -206,8 +209,8 @@ int main()
 		else {
 			if (((pid - 0x40000000) % 25 == nature || nature == -1) && corruptionHeart[subOrder] == corruptionType)
 			{
-				string strIVs = dec2str(ivs & 0x1f, 2) + " / " + dec2str((ivs >> 5) & 0x1f, 2) + " / " + dec2str((ivs >> 10) & 0x1f, 2)
-					+ " / " + dec2str((ivs >> 21) & 0x1f, 2) + " / " + dec2str((ivs >> 26) & 0x1f, 2) + " / " + dec2str((ivs >> 16) & 0x1f, 2);
+				string strIVs = dec2str((ivs >> 16) & 0x1f, 2) + " / " + dec2str((ivs >> 21) & 0x1f, 2) + " / " + dec2str((ivs >> 26) & 0x1f, 2)
+					+ " / " + dec2str((ivs >> 5) & 0x1f, 2) + " / " + dec2str((ivs >> 10) & 0x1f, 2) + " / " + dec2str(ivs & 0x1f, 2);
 
 				cout << pidShown + 1 << ".\t0x" << dec2hex(pid, 4) << "\t Frame " << frame << "\t" << natures[pid % 25] << "\t\t" << strIVs << "\tHeart" << endl;
 				pidShown++;
