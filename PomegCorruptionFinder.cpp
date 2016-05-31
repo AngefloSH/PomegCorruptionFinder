@@ -198,8 +198,8 @@ int main()
 		if ((pid >> 30) % 2 == 0) {
 			if (((pid + 0x40000000) % 25 == nature || nature == -1) && corruptionUnmarked[subOrder] == corruptionType)
 			{
-				string strIVs = dec2str(ivs & 0x1f, 2) + " / " + dec2str((ivs >> 5) & 0x1f, 2) + " / " + dec2str((ivs >> 10) & 0x1f, 2)
-					+ " / " + dec2str((ivs >> 21) & 0x1f, 2) + " / " + dec2str((ivs >> 26) & 0x1f, 2) + " / " + dec2str((ivs >> 16) & 0x1f, 2);
+				string strIVs = dec2str((ivs >> 16) & 0x1f, 2) + " / " + dec2str((ivs >> 21) & 0x1f, 2) + " / " + dec2str((ivs >> 26) & 0x1f, 2)
+					+ " / " + dec2str((ivs >> 5) & 0x1f, 2) + " / " + dec2str((ivs >> 10) & 0x1f, 2) + " / " + dec2str(ivs & 0x1f, 2);
 
 				cout << pidShown + 1 << ".\t0x" << dec2hex(pid, 4) << "\t Frame " << frame << "\t" << natures[pid % 25] << "\t\t" << strIVs << "\tUnmarked" << endl;
 				pidShown++;
